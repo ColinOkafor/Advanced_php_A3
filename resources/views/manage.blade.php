@@ -13,8 +13,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+
     @foreach ($items as $item)
+      <tr>
       <th scope="row">{{$item->id}}</th>
       <td>{{$item->name}}
         &nbsp;
@@ -77,9 +78,10 @@
             width="25"
         />
       </td>
+    </tr>
     @endforeach
 
-    </tr>
+ 
    
    
   </tbody>
@@ -87,25 +89,25 @@
 <a href="{{ route('manage', ['showForm' => true]) }}">Create new</a>
 @if($showForm)
 <div style="margin: 10%; border:1px solid black; padding: 2% ">
-    <form method="POST">
+    <form method="POST" action="{{route('manage.store')}}">
     @csrf
     <div class="mb-3">
         <label for="name" class="form-label">Name</label>
-        <input type="name" class="form-control" id="name">
+        <input type="text" name="name" class="form-control" id="name">
     </div>
     <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <input type="description" class="form-control" id="description">
+        <input type="text" class="form-control" name="description" id="description">
     </div>
     <div class="mb-3">
         <label for="price" class="form-label">Price</label>
-        <input type="price" class="form-control" id="price">
+        <input type="number" step="0.01" class="form-control" name="price" id="price">
     </div>
     <div class="mb-3">
         <label for="product_code" class="form-label">Product_code</label>
-        <input type="product_code" class="form-control" id="product_code">
+        <input type="text" class="form-control" name="product_code" id="product_code">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" onlick="alert('Row added')">Submit</button>
     </form>
     </br>
     <a href="{{ route('manage') }}"> Close form</a>
