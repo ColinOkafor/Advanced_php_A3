@@ -17,66 +17,24 @@
     @foreach ($items as $item)
       <tr>
       <th scope="row">{{$item->id}}</th>
-      <td>{{$item->name}}
-        &nbsp;
-         <img id="edit"
-            src="{{ asset('images/edit.png') }}"
-            alt="an image"
-            height="25"
-            width="25"
-        />
-         <img id="delete"
-            src="{{ asset('images/delete.png') }}"
-            alt="an image"
-            height="25"
-            width="25"
-        />
-      </td>
-      <td>{{$item->description}}
-         &nbsp;
-         <img id="edit"
-            src="{{ asset('images/edit.png') }}"
-            alt="an image"
-            height="25"
-            width="25"
-        />
-         <img id="delete"
-            src="{{ asset('images/delete.png') }}"
-            alt="an image"
-            height="25"
-            width="25"
-        />
-      </td>
-      <td>{{$item->product_code}}
-         &nbsp;
-         <img id="edit"
-            src="{{ asset('images/edit.png') }}"
-            alt="an image"
-            height="25"
-            width="25"
-            onclick="alert('item edited')"
-        />
-         <img id="delete"
-            src="{{ asset('images/delete.png') }}"
-            alt="an image"
-            height="25"
-            width="25"
-        />
-      </td>
+      <td>{{$item->name}}</td>
+      <td>{{$item->description}}</td>
+      <td>{{$item->product_code}}</td>
       <td>{{$item->price}}
          &nbsp;
-         <img id="edit"
-            src="{{ asset('images/edit.png') }}"
-            alt="an image"
-            height="25"
-            width="25"
-        />
-         <img id="delete"
-            src="{{ asset('images/delete.png') }}"
-            alt="an image"
-            height="25"
-            width="25"
-        />
+         <form action="{{ route('manage.edit', $item->id) }}" method="GET" style="display:inline;">
+            @csrf
+            <button type="submit" >
+                <img src="{{ asset('images/edit.png') }}" height="25" width="25" style="pointer-events:none; display:block;">
+            </button>
+        </form>
+        
+         <form action="{{ route('manage.delete', $item->id) }}" method="POST" style="display:inline;">
+            @csrf
+            <button type="submit" >
+                <img src="{{ asset('images/delete.png') }}" height="25" width="25" style="pointer-events:none; display:block;">
+            </button>
+        </form>
       </td>
     </tr>
     @endforeach
@@ -88,7 +46,7 @@
 </table>
 <a href="{{ route('manage', ['showForm' => true]) }}">Create new</a>
 @if($showForm)
-<div style="margin: 10%; border:1px solid black; padding: 2% ">
+<div style="margin: 10%; border:1px solid black; padding: 2%; background-color: #e8e8e8f8; ">
     <form method="POST" action="{{route('manage.store')}}">
     @csrf
     <div class="mb-3">
@@ -112,6 +70,53 @@
     </br>
     <a href="{{ route('manage') }}"> Close form</a>
 
+</div>
+@endif
+
+@if(isset($editItem))
+<div class="modal fade show" style="display:block; background:rgba(0,0,0,0.5);">
+  <div class="modal-dialog">
+    <form method="POST" action="{{ route('manage.update', $editItem->id) }}">
+      @csrf
+
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Item</h5>
+          <a href="{{ route('manage') }}" class="btn-close"></a>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="mb-3">
+            <label>Name</label>
+            <input type="text" class="form-control" name="name" value="{{ $editItem->name }}">
+          </div>
+
+          <div class="mb-3">
+            <label>Description</label>
+            <input type="text" class="form-control" name="description" value="{{ $editItem->description }}">
+          </div>
+
+          <div class="mb-3">
+            <label>Product Code</label>
+            <input type="text" class="form-control" name="product_code" value="{{ $editItem->product_code }}">
+          </div>
+
+          <div class="mb-3">
+            <label>Price</label>
+            <input type="number" class="form-control" name="price" value="{{ $editItem->price }}">
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
 </div>
 @endif
 @endsection
