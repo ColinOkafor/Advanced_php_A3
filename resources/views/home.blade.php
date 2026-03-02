@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home page</title>
-</head>
-<body>
-    <h1>This is the homepage</h1>
-</body>
-</html>
+@extends('layouts.app')
+@section('title', 'Home')
+@section('content')
+    <h3 style=" margin-top: 20%;"><em>Find affordable devices that suit your everyday needs.</em></h3>
+
+
+@endsection
