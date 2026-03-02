@@ -4,6 +4,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <style>
     body{
         font-family: "Lucida Console", "Courier New", monospace;
@@ -58,7 +59,7 @@
     <br/>
 
     <header class="border border-dark" >
-            <img style=" border: 1px solid black; border-radius: 140px; box-shadow:  0 0 12px 3px rgba(231, 222, 161, 0.8);"
+        <img style=" border: 1px solid black; border-radius: 140px; box-shadow:  0 0 12px 3px rgba(231, 222, 161, 0.8);"
             src="{{ asset('images/homepage_logo.png') }}"
             alt="an image"
             height="250"

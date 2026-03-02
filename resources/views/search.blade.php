@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('title', 'search')
 @section('content')
+
+    @csrf
     <div class="mx-auto p-2" style="background-color: #e8e8e8f8; border-radius:3%; align-items:center; width:55%; ">
         <div class="input-group mb-3" >
             <span class="input-group-text">Name</span>
