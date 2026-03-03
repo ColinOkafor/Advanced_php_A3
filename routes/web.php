@@ -16,4 +16,3 @@ Route::post('/manage/update/{id}', [InventoryController::class, 'update'])->name
 Route::post('/manage/delete/{id}', [InventoryController::class, 'delete'])->name('manage.delete');
 
 Route::get('/search', [InventoryController::class, 'search'])->name('search');
-

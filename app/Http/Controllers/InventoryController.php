@@ -62,13 +62,43 @@ class InventoryController extends Controller{
             return redirect()->route('manage')->with('message', 'Item deleted!');
         }
 
-         public function search(Request $request)
+        public function search(Request $request)
         {
-            //Fetch updated list
-            $items = DB::select("SELECT * FROM table_of_inventory");
-            //show form toggle
-            $showForm = $request->has('showForm');
+            // Detect if user clicked Search
+            $hasSearch = $request->filled('name') ||
+                        $request->filled('low') ||
+                        $request->filled('high');
 
-            return view('search', compact('items', 'showForm'));
+            // Default: empty results
+            $results = collect();
+
+            if ($hasSearch) {
+
+                // Validate inputs
+                $request->validate([
+                    'name' => 'nullable|string',
+                    'low'  => 'nullable|numeric|min:0',
+                    'high' => 'nullable|numeric|min:0',
+                ]);
+
+                // Build query
+                $query = DB::table('table_of_inventory');
+
+                if ($request->filled('name')) {
+                    $query->where('name', 'LIKE', '%' . $request->name . '%');
+                }
+
+                if ($request->filled('low')) {
+                    $query->where('price', '>=', $request->low);
+                }
+
+                if ($request->filled('high')) {
+                    $query->where('price', '<=', $request->high);
+                }
+
+                $results = $query->get();
+            }
+
+            return view('search', compact('hasSearch', 'results'));
         }
 }
