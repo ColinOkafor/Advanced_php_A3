@@ -49,8 +49,8 @@
 </head>
 
 <body>
-<div class="border border-dark" style="text-align: center;">
-    <nav class="border border-dark" style="display: flex; gap: 100px; justify-content: center; background-color: #C8AD7F; padding:2%;">
+<div style="text-align: center;">
+    <nav style="display: flex; gap: 100px; justify-content: center; background-color: #C8AD7F; padding:2%;">
         <h4><a href="/" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Home</a></h4>
         <h4><a href="/manage" class="nav-link {{ request()->is('manage') ? 'active' : '' }}">manage</a></h4>
         <h4><a href="/search" class="nav-link {{ request()->is('search') ? 'active' : '' }}">search</a></h4>
@@ -58,8 +58,8 @@
     </nav>
     <br/>
 
-    <header class="border border-dark" >
-        <img style=" border: 1px solid black; border-radius: 140px; box-shadow:  0 0 12px 3px rgba(231, 222, 161, 0.8);"
+    <header>
+        <img style=" border-radius: 140px; box-shadow:  0 0 12px 3px rgba(231, 222, 161, 0.8);"
             src="{{ asset('images/homepage_logo.png') }}"
             alt="an image"
             height="250"
@@ -73,7 +73,7 @@
     </main>
         <br/>
 
-    <footer class="border border-dark" style=" background-color: #C8AD7F; padding:2%;">
+    <footer style=" background-color: #C8AD7F; padding:2%;">
        <h4> &#169; Colin okafor</h4>
     </footer>
 </div>

@@ -74,13 +74,6 @@ class InventoryController extends Controller{
 
             if ($hasSearch) {
 
-                // Validate inputs
-                $request->validate([
-                    'name' => 'nullable|string',
-                    'low'  => 'nullable|numeric|min:0',
-                    'high' => 'nullable|numeric|min:0',
-                ]);
-
                 // Build query
                 $query = DB::table('table_of_inventory');
 

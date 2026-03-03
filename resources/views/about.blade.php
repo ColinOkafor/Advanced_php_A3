@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('title', 'About')
 @section('content')
-    <div style=" margin-top: 20%;">
+    <div style=" margin-top: 5%;">
+        <h3><em>This application helps you track, organize, and update your inventory records with ease. It provides a simple way to monitor stock levels, manage items, and keep your data accurate and up to date.</em></h3>
+            </br>
         <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Display side bar</button>
 
         <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
@@ -10,7 +12,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <img style=" border: 1px solid black; border-radius: 140px;"
+            <img style=" border-radius: 140px;"
                 src="{{ asset('images/contact.png') }}"
                 alt="an image"
                 height="100"
